@@ -1,0 +1,32 @@
+.delete {
+    color: white;
+    background: #982828;
+    width: 600px;
+    text-align: center;
+    margin-left: 250px
+
+}
+
+
+.uno {
+    font-size: 2.9rem;
+    font: bold;
+}
+
+.nadpis {
+    font-weight: bold;
+    font-family: 'Edu NSW ACT Foundation', cursive;
+    color: #EBDD64;
+}
+
+footer p {
+    margin-bottom: .5rem;
+    margin-left: 690px;
+    font-weight: bold;
+        font-family: 'Edu NSW ACT Foundation', cursive;
+        color: #EBDD64;
+}
+.list{
+    margin-left: 690px
+}
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&display=swap"
+        rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <link rel="stylesheet" href="npm i bootstrap@5.3.0-alpha1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" >
+  <link rel="stylesheet" th:href="@{/styles/port.css}" type="text/css"/>
+  <link rel="stylesheet" th:href="@{/styles/main.css}" type="text/css"/>
+  <link rel="shortcut icon" th:href="@{/images/7857155_playstore_google_play_store_app_icon.ico}"/>
+
+  <title>AppEmployees</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+          <h2 class="logo">CRUD<span>Aplikace</span></h2>
+          <ul>
+            <li><a th:href="@{/employees/home}">Domovská stránka</a></li>
+            <li><a th:href="@{/employees/showFormForAdd}">Přidat zaměstnance</a></li>
+            <li><a th:href="@{/employees/info}">O aplikaci</a></li>
+          </ul>
+          <a th:href="@{/account/login}" class="btn">Přihlášení/Registrace</a>
+        </nav>
+      <h6 class="update"  th:text="${success}" th:if="${success}" ></h6>
+          <div class="container">
+            <h3>Vyplňte Údaje</h3>
+
+            <p class="h4 mb-4"></p>
+            <!-- send form data to /employees/save and ${employee} is reference for our model attribute from class EmployeeController-->
+            <form action="#" th:action="@{/employees/save}" th:object="${employee}" method="POST">
+
+              <!-- add hidden form field to handle update.
+              This binds to the model attribute and tells your app which employee to update.-->
+              <input type="hidden" th:field="*{id}"/>
+
+              <input type="text" th:field="*{firstName}"
+                     class="form-control mb-4 col-4" placeholder="Zadejte jméno">
+
+              <input type="text" th:field="*{lastName}"
+                     class="form-control mb-4 col-4" placeholder="Zadejte příjmení">
+
+              <input type="text" th:field="*{email}"
+                     class="form-control mb-4 col-4" placeholder="Zadejte email">
+
+              <input type="text" th:field="*{phone}"
+                     class="form-control mb-4 col-4" placeholder="Zadejte telefonní číslo">
+
+              <button type="submit" class="btn btn-info col-2">Uložit</button>
+            </form>
+            <br />
+            <br/>
+            <br/>
+            <a th:href="@{/employees/home}">Zpět na domovskou stránku</a>
+          </div>
+        </header>
+    <footer>
+      <p><strong>Vytvořil Petr Šidák</strong></p>
+    </footer>
+</body>
+</html>

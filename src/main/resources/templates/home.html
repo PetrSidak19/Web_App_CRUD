@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Webová aplikace"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;700&display=swap"
+        rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <link rel="stylesheet" href="npm i bootstrap@5.3.0-alpha1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" >
+
+  <link rel="stylesheet" th:href="@{/styles/main.css}" type="text/css"/>
+    <link rel="shortcut icon" th:href="@{/images/7857155_playstore_google_play_store_app_icon.ico}"/>
+    <link rel="stylesheet" th:href="@{/styles/port.css}" type="text/css"/>
+
+<title>AppEmployees</title>
+</head>
+
+<body>
+    <header>
+      <nav>
+          <h2 class="logo">CRUD<span>Aplikace</span></h2>
+            <ul>
+              <li><a th:href="@{/employees/home}">Domovská stránka</a></li>
+              <li><a th:href="@{/employees/showFormForAdd}">Přidat zaměstnance</a></li>
+              <li><a th:href="@{/employees/info}">O aplikaci</a></li>
+            </ul>
+          <a th:href="@{/account/login}" class="btn">Přihlášení/Registrace</a>
+      </nav>
+
+          <div class="container">
+              <h2 class="delete"  th:text="${success}" th:if="${success}"></h2>
+            <h3 class="uno" >Údaje zaměstnanců</h3>
+            <!-- Add a button -->
+              <a th:href="@{/employees/showFormForAdd}"
+                 class="btn btn-primary btn-sm mb-3" >
+                Přidat zaměstnance
+              </a>
+
+
+              <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                <tr>
+                  <th>Jméno zaměstnance:</th>
+                  <th>Příjmení:</th>
+                  <th>Email:</th>
+                    <th>Telefon:</th>
+                  <th>Upravit/Smazat</th>
+                </tr>
+                </thead>
+
+      <tbody>
+      <!-- looping all the data (Employees object) from the model employees
+      which we created in controller class EmployeeController-->
+           <tr th:each="tempEmployee : ${employees}">
+              <td class="move" th:text="${tempEmployee.firstName}"></td>
+              <td class="move" th:text="${tempEmployee.lastName}"></td>
+              <td class="move" th:text="${tempEmployee.email}"></td>
+               <td class="move" th:text="${tempEmployee.phone}"></td>
+
+             <td class="move">
+              <!-- Add update button/link with embedded employee Id -->
+              <a th:href="@{/employees/update(employeeId=${tempEmployee.id})}"
+                 class="btn btn-info btn-sm">
+                Upravit
+              </a>
+              <!-- Add delete button/link with embedded employee Id -->
+              <a th:href="@{/employees/delete(employeeId=${tempEmployee.id})}"
+                 class="btn btn-danger btn-sm"
+                 onclick="if(!(confirm('Opravdu chcete smazat údaje o zaměstnanci?'))) return false">
+                Smazat
+              </a>
+             </td>
+           </tr>
+          </tbody>
+         </table>
+          </div>
+      </header>
+
+    <div class="list">
+            <button type="button" class="btn btn-secondary">1</button>
+            <button type="button" class="btn btn-secondary">2</button>
+            <button type="button" class="btn btn-secondary">3</button>
+          </div>
+
+    <!-- Footer -->
+    <footer>
+      <p><strong>Vytvořil Petr Šidák</strong></p>
+    </footer>
+  </body>
+</html>
